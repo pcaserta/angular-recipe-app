@@ -8,6 +8,7 @@ import { Recipe } from "../recipe.model";
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [
+    new Recipe("Spaghetti", "This is italian", 'https://www.starfrit.com/media/contentmanager/content/cache/1070x1070//recipes/e1_r1_spaghetti.jpg'),
     new Recipe("Spaghetti", "This is italian", 'https://www.starfrit.com/media/contentmanager/content/cache/1070x1070//recipes/e1_r1_spaghetti.jpg')
   ];
 

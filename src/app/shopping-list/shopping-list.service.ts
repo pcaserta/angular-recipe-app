@@ -4,7 +4,7 @@ import { EventEmitter } from "@angular/core";
 export class ShoppingListService {
   ingredientsChanged = new EventEmitter<Ingredient[]>();
   private ingredients: Ingredient[] = [
-    new Ingredient("Apples", Math.random()),
+    new Ingredient("Apples", 1),
     new Ingredient("Tomatoes", 10)
   ];
 

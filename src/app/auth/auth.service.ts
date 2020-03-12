@@ -4,7 +4,7 @@ import { catchError, tap } from "rxjs/operators";
 import { throwError, BehaviorSubject } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
+
 
 export interface AuthResponseData {
   kind: string;
@@ -37,7 +37,7 @@ export class AuthService {
         catchError(this.handleError),
         tap(resData => {
           this.handleAuthentication(
-            resData.email,
+            resData.email, 
             resData.localId,
             +resData.expiresIn,
             resData.idToken

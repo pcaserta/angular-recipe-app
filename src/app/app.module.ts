@@ -23,7 +23,6 @@ import { shoppingListReducer } from "./shopping-list/store/shopping-list.reducer
     SharedModule,
     CoreModule,
   ],
-  // providers: [LoggingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

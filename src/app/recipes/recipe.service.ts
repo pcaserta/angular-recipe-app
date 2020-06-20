@@ -3,12 +3,14 @@ import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
 import { Subject } from "rxjs";
+import { Store } from "@ngrx/store";
+import * as ShoppingListActions from "../shopping-list/store/shopping-list.actions";
 
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
   // private recipes: Recipe[] = [
-  //   new Recipe( 
+  //   new Recipe(
   //     "Spaghetti",
   //     "This is italian",
   //     "https://www.starfrit.com/media/contentmanager/content/cache/1070x1070//recipes/e1_r1_spaghetti.jpg",
@@ -21,13 +23,16 @@ export class RecipeService {
   //     [new Ingredient("parmesean", 6), new Ingredient("beef", 2)]
   //   )
   // ];
-  private recipes: Recipe[]=[]
+  private recipes: Recipe[] = [];
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(
+    private slService: ShoppingListService,
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
+  ) {}
 
   setRecipes(recipes: Recipe[]) {
-    this.recipes = recipes
-    this.recipesChanged.next(this.recipes.slice())
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   getRecipes() {
@@ -39,7 +44,7 @@ export class RecipeService {
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.slService.addIngredients(ingredients);
+    this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
 
   addRecipe(recipe: Recipe) {

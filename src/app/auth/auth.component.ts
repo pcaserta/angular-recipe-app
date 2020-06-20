@@ -15,6 +15,7 @@ import { PlaceholderDirective } from "../shared/placeholder/placeholder.directiv
   selector: "app-auth",
   templateUrl: "./auth.component.html"
 })
+
 export class AuthComponent implements OnDestroy {
   isLoginMode = true;
   isLoading = false;
@@ -29,6 +30,7 @@ export class AuthComponent implements OnDestroy {
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver
   ) {}
+
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
